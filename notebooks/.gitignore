@@ -1,0 +1,13 @@
+
+
+
+
+
+datalakehouse/*
+datasets/*
+notebooks/.ipynb_checkpoints
+.vscode/
+eda-reports/*
+
+media/.$*
+tmp/*
