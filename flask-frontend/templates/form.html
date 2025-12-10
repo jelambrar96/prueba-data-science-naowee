@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flask ML Prediction Client</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .container { max-width: 600px; margin: auto; }
+        .result-box { background:#f3f3f3; padding:15px; margin-top:20px; border-radius:5px; }
+        label { font-weight: bold; display:block; margin-top:10px; }
+        input { width: 100%; padding:8px; margin-top:5px; }
+        button { margin-top:20px; padding:10px 20px; font-size:16px; cursor:pointer; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Formulario de Predicción ML (Flask → FastAPI)</h2>
+
+    <form method="POST" action="/predict">
+        <label>Horas estudiadas</label>
+        <input type="number" name="hours_studied" step="0.1" required>
+
+        <label>Previous scores</label>
+        <input type="number" name="previous_scores" step="0.1" required>
+
+        <label>Extracurricular activities</label>
+        <input type="number" name="extracurricular_activities" step="0.1" required>
+
+        <label>Horas de sueño</label>
+        <input type="number" name="sleep_hours" step="0.1" required>
+
+        <label>Sample question papers practiced (0 o 1)</label>
+        <input type="number" name="sample_question_papers_practiced" min="0" max="1" required>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    {% if classification or regression %}
+    <div class="result-box">
+        <h3>Resultados:</h3>
+
+        {% if classification %}
+            <p><strong>Clasificación (best):</strong> {{ classification }}</p>
+        {% endif %}
+
+        {% if regression %}
+            <p><strong>Regresión (best):</strong> {{ regression }}</p>
+        {% endif %}
+    </div>
+    {% endif %}
+
+</div>
+</body>
+</html>

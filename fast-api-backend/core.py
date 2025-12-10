@@ -5,9 +5,15 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-MINIO_ACCESS_KEY = os.getenv("MINIO_ACCESS_KEY", None)
-MINIO_SECRET_KEY = os.getenv("MINIO_SECRET_KEY", None)
+MINIO_ACCESS_KEY  = os.getenv("MINIO_ACCESS_KEY", None)
+MINIO_SECRET_KEY  = os.getenv("MINIO_SECRET_KEY", None)
 MINIO_BUCKET_NAME = os.getenv("MINIO_BUCKET_NAME", None)
+
+if os.getenv("AWS_ACCESS_KEY_ID", None) is None:
+    os.environ["AWS_ACCESS_KEY_ID"] = MINIO_ACCESS_KEY
+
+if os.getenv("AWS_SECRET_ACCESS_KEY", None) is None:
+    os.environ["AWS_SECRET_ACCESS_KEY"] = MINIO_SECRET_KEY
 
 #
 POSTGRES_DB = os.getenv("POSTGRES_DB", None)

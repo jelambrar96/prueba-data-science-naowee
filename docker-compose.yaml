@@ -159,6 +159,19 @@ services:
       - mlflow
 
 
+  flask:
+    build:
+      context: flask-frontend
+      dockerfile: Dockerfile
+    container_name: flask-tfm
+    ports:
+      - 5001:5000 # mlflow on 5000
+    environment:
+      - FASTAPI_SOCKET=http://fastapi:8000
+    depends_on:
+      - fastapi
+
+
 volumes:
   postgres_data:
   minio_data:

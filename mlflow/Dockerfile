@@ -1,17 +1,7 @@
 # FROM python:3.10-slim
-FROM ubuntu:22.04
-
-RUN apt-get update
-RUN apt-get install -y python3.10 python3-pip
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+FROM openeuler/mlflow:3.3.1-oe2403sp1
 
 RUN mkdir -p /home/mlflow
-RUN useradd -m -s /bin/bash mlflow
-RUN chown -R mlflow:mlflow /home/mlflow
-
-USER mlflow
-
 WORKDIR /home/mlflow
 
 # Set environment variables

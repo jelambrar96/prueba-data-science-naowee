@@ -32,8 +32,8 @@ ENV PATH="/opt/conda/envs/jupyter_env/bin:$PATH"
 COPY . .
 
 # Expone el puerto por defecto de Jupyter
-EXPOSE 8000
+EXPOSE 5000
 
 # Comando para ejecutar el servidor Jupyter Notebook usando la variable de entorno JUPYTER_TOKEN
 # Utilizamos la "shell form" de CMD para que las variables de entorno se expandan correctamente.
-CMD ["uvicorn", "main:app", "--reload", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["gunicorn", "-w", "2", "-b," "0.0.0.0:5000", "app:app"]
