@@ -1,26 +1,26 @@
-# MLflow Prediction API
+# API de Predicción con MLflow
 
-This API provides a bridge to a machine learning model managed by MLflow, allowing predictions to be made via a RESTful interface.
+Esta API sirve como puente para un modelo de machine learning gestionado por MLflow, permitiendo realizar predicciones a través de una interfaz RESTful.
 
-## How it works
+## Cómo funciona
 
-The application loads a model from MLflow and exposes an endpoint to perform predictions. The model type (classification or regression) and its name are specified in the request URL.
+La aplicación carga un modelo desde MLflow y expone un endpoint para realizar predicciones. El tipo de modelo (clasificación o regresión) y su nombre se especifican en la URL de la solicitud.
 
 ## Endpoint
 
 ### `/predict/{type_model}/{model_name}`
 
-- **Method:** `POST`
-- **Description:** Makes a prediction using the specified model from MLflow.
+- **Método:** `POST`
+- **Descripción:** Realiza una predicción utilizando el modelo especificado desde MLflow.
 
-#### Path Parameters
+#### Parámetros de Ruta
 
-- `type_model` (string, required): The type of model to use. Must be either `'classification'` or `'regression'`.
-- `model_name` (string, required): The name of the model (run name in MLflow) to use for the prediction. Use `'best'` to load the best model.
+- `type_model` (string, requerido): El tipo de modelo a utilizar. Debe ser `'classification'` o `'regression'`.
+- `model_name` (string, requerido): El nombre del modelo (nombre de la ejecución o "run name" en MLflow) a utilizar para la predicción. Use `'best'` para cargar el mejor modelo.
 
-#### Request Body
+#### Cuerpo de la Solicitud (Request Body)
 
-A JSON array of feature objects. Each object must contain the following keys:
+Un array JSON de objetos de características. Cada objeto debe contener las siguientes claves:
 
 - `hours_studied` (float)
 - `previous_scores` (float)
@@ -28,7 +28,7 @@ A JSON array of feature objects. Each object must contain the following keys:
 - `sleep_hours` (float)
 - `sample_question_papers_practiced` (boolean)
 
-#### Example Request
+#### Ejemplo de Solicitud
 
 ```bash
 curl -X 'POST' \
