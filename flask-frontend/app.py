@@ -18,11 +18,11 @@ def predict():
 
     # Convertir los datos del formulario a dict con el formato requerido por FastAPI
     payload = [{
-        "hours_studied": float(request.form["hours_studied"]),
-        "previous_scores": float(request.form["previous_scores"]),
-        "extracurricular_activities": float(request.form["extracurricular_activities"]),
-        "sleep_hours": float(request.form["sleep_hours"]),
-        "sample_question_papers_practiced": bool(int(request.form["sample_question_papers_practiced"]))
+        "hours_studied": int(request.form["hours_studied"]),
+        "previous_scores": int(request.form["previous_scores"]),
+        "extracurricular_activities": True if request.form.get("extracurricular_activities") == "on" else False,
+        "sleep_hours": int(request.form["sleep_hours"]),
+        "sample_question_papers_practiced": int(request.form["sample_question_papers_practiced"])
     }]
 
     # Endpoints
