@@ -18,9 +18,9 @@ app = FastAPI(title="MLflow Prediction API")
 class FeatureInput(BaseModel):
     hours_studied: float
     previous_scores: float
-    extracurricular_activities: float
+    extracurricular_activities: bool
     sleep_hours: float
-    sample_question_papers_practiced: bool
+    sample_question_papers_practiced: float
 
 
 

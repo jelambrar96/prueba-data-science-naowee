@@ -12,9 +12,9 @@ def test_predict_endpoint():
         {
             "hours_studied": 7,
             "previous_scores": 99,
-            "extracurricular_activities": 1,
+            "extracurricular_activities": True,
             "sleep_hours": 9,
-            "sample_question_papers_practiced": True
+            "sample_question_papers_practiced": 2
         }
     ]
 
